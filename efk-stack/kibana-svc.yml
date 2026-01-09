@@ -6,9 +6,13 @@ metadata:
   labels:
     app: kibana
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: kibana
   ports:
     - port: 5601
+      targetPort: 5601  # Optional: explicitly match pod port
+      protocol: TCP     # Optional: default TCP
+  selector:
+    app: kibana
 
